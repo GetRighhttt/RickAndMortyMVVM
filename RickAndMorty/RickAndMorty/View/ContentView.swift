@@ -9,10 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     
+    /**
+     View model instance.
+     */
     @StateObject private var vm: CharacterViewModel
+    /**
+     Index of images
+     */
+    let index: Int
     
     init(vm: CharacterViewModel) {
         self._vm = StateObject(wrappedValue: CharacterViewModel(service: CharacterService()))
+        self.index = 0
     }
     
     var body: some View {
@@ -35,8 +43,10 @@ struct ContentView: View {
                                 /**
                                  This is how we resize an image downloaded from a URL using AsyncImage. There are different
                                  ways we can go about manipulating this data.
+                                 
+                                 Here we demonstrate how to add images, use animations, and add delays to wait for those images to load in based on their index in the list.
                                  */
-                                AsyncImage(url: URL(string: item.image)) { phase in
+                                AsyncImage(url: URL(string: item.image), transaction: .init(animation: .spring().delay(Double(index) * 0.5))) { phase in
                                     
                                     if let image = phase.image {
                                         
@@ -55,12 +65,15 @@ struct ContentView: View {
                                             }
                                         
                                     } else { // progressview.
-                                        Color.indigo
+                                        Color.pink
                                             .overlay {
                                                 ProgressView()
                                             }
                                     }
-                                }.frame(width: 110, height: 120)
+                                }
+                                .frame(width: 110, height: 120)
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .transition(.opacity.combined(with: .scale))
                             }
                             
                             VStack(alignment: .leading) { // ** = bold
@@ -80,13 +93,14 @@ struct ContentView: View {
                                 
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                     }
-                            .navigationBarTitle("Main Characters")
-                            .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarTitle("Main Rick & Morty Characters")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
-                .listStyle(.plain)
+                .listStyle(.grouped)
                 /**
                  if loading, show a progress circle.
                  */
