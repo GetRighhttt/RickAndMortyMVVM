@@ -27,20 +27,64 @@ struct ContentView: View {
                 List {
                     ForEach(data,
                             id: \.id) { item in
-                        VStack(alignment: .leading){ // ** = bold
-                            Text("**Name**: \(item.name)")
-                            Text("**Status**: \(item.status)")
-                            Text("**Gender**: \(item.gender)")
-                            Text("**Created**: \(item.created)")
-                            Text("**Origin**: \(item.origin.name)")
-                            Text("**Location**: \(item.location.name)")
+                        
+                        HStack(alignment: .top) {
+                            
+                            VStack {
+                                
+                                /**
+                                 This is how we resize an image downloaded from a URL using AsyncImage. There are different
+                                 ways we can go about manipulating this data.
+                                 */
+                                AsyncImage(url: URL(string: item.image)) { phase in
+                                    
+                                    if let image = phase.image {
+                                        
+                                        image.resizable()
+                                            .scaledToFit()
+                                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                                        
+                                    } else if phase.error != nil {
+                                        
+                                        Color.gray
+                                            .opacity(0.75)
+                                            .overlay {
+                                                Image(systemName: "photo")
+                                                    .foregroundColor(.white)
+                                                    .font(.system(size: 30, weight: .bold))
+                                            }
+                                        
+                                    } else { // progressview.
+                                        Color.indigo
+                                            .overlay {
+                                                ProgressView()
+                                            }
+                                    }
+                                }.frame(width: 110, height: 120)
+                            }
+                            
+                            VStack(alignment: .leading) { // ** = bold
+                                
+                                Text("**Name**: \(item.name)")
+                                    .font(.headline)
+                                Text("**Status**: \(item.status)")
+                                    .font(.subheadline)
+                                Text("**Gender**: \(item.gender)")
+                                    .font(.subheadline)
+                                Text("**Origin**: \(item.origin.name)")
+                                    .font(.subheadline)
+                                Text("**Location**: \(item.location.name)")
+                                    .font(.subheadline)
+                                Text("**Created**: \(item.created)")
+                                    .font(.subheadline)
+                                
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
-                        .padding(.horizontal, 4)
                     }
-                    .navigationBarTitle("Rick & Morty Characters")
-                    .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarTitle("Main Characters")
+                            .navigationBarTitleDisplayMode(.inline)
                 }
                 .listStyle(.plain)
                 /**
