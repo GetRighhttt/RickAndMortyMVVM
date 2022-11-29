@@ -34,9 +34,7 @@ struct CharacterService {
          data is the data we get back and response is the response that we get back.
          */
         let url = URL(string: "https://rickandmortyapi.com/api/character")
-        let configuration = URLSessionConfiguration.ephemeral // wont assist any data on disk.
-        
-        let (data, response) = try await URLSession(configuration: configuration).data(from: url!)
+        let (data, response) = try await URLSession.shared.data(from: url!)
         
         /**
          Checking if status code is 200, and if it isn't, we want to throw an error.
