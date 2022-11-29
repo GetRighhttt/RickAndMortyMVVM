@@ -11,6 +11,9 @@
 		11D9ABE2293583C5007ACA86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9ABE1293583C5007ACA86 /* ContentView.swift */; };
 		11D9ABE4293583C8007ACA86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D9ABE3293583C8007ACA86 /* Assets.xcassets */; };
 		11D9ABE7293583C8007ACA86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D9ABE6293583C8007ACA86 /* Preview Assets.xcassets */; };
+		11D9ABF1293584CC007ACA86 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9ABF0293584CC007ACA86 /* CharacterModel.swift */; };
+		11D9ABF6293586EB007ACA86 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9ABF5293586EB007ACA86 /* CharacterService.swift */; };
+		11D9ABF829358C4B007ACA86 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9ABF729358C4B007ACA86 /* CharacterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		11D9ABE1293583C5007ACA86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		11D9ABE3293583C8007ACA86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11D9ABE6293583C8007ACA86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		11D9ABF0293584CC007ACA86 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		11D9ABF5293586EB007ACA86 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
+		11D9ABF729358C4B007ACA86 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,11 @@
 		11D9ABDE293583C5007ACA86 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
+				11D9ABF2293586CC007ACA86 /* Service */,
+				11D9ABEF293584B5007ACA86 /* ViewModel */,
+				11D9ABEE293584AD007ACA86 /* View */,
+				11D9ABED293584A3007ACA86 /* Model */,
 				11D9ABDF293583C5007ACA86 /* RickAndMortyApp.swift */,
-				11D9ABE1293583C5007ACA86 /* ContentView.swift */,
 				11D9ABE3293583C8007ACA86 /* Assets.xcassets */,
 				11D9ABE5293583C8007ACA86 /* Preview Content */,
 			);
@@ -65,6 +74,38 @@
 				11D9ABE6293583C8007ACA86 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		11D9ABED293584A3007ACA86 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11D9ABF0293584CC007ACA86 /* CharacterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		11D9ABEE293584AD007ACA86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				11D9ABE1293583C5007ACA86 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11D9ABEF293584B5007ACA86 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				11D9ABF729358C4B007ACA86 /* CharacterViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		11D9ABF2293586CC007ACA86 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				11D9ABF5293586EB007ACA86 /* CharacterService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11D9ABF1293584CC007ACA86 /* CharacterModel.swift in Sources */,
+				11D9ABF829358C4B007ACA86 /* CharacterViewModel.swift in Sources */,
 				11D9ABE2293583C5007ACA86 /* ContentView.swift in Sources */,
 				11D9ABE0293583C5007ACA86 /* RickAndMortyApp.swift in Sources */,
+				11D9ABF6293586EB007ACA86 /* CharacterService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
